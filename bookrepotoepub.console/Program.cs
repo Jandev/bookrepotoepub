@@ -10,12 +10,18 @@ namespace bookrepotoepub.console
     {
         static void Main(string[] args)
         {
-            var allArchives = Indexer.GetAllArchives();
+            var allArchives = Indexer.GetAllArchives().ToList();
+            Console.WriteLine("Found " + allArchives.Count + " archives");
 
             var extracter = new Extracter();
             foreach (var archive in allArchives)
             {
+                Console.WriteLine("Extracting: " + archive);
                 extracter.ExtractArchiveToLocalPath(archive);
+                Console.WriteLine("Extracted: " + archive);
+#if DEBUG
+                break;
+#endif
             }
         }
     }
