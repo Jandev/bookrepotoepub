@@ -10,6 +10,13 @@ namespace bookrepotoepub.console
     {
         static void Main(string[] args)
         {
+            var allArchives = Indexer.GetAllArchives();
+
+            var extracter = new Extracter();
+            foreach (var archive in allArchives)
+            {
+                extracter.ExtractArchiveToLocalPath(archive);
+            }
         }
     }
 }
