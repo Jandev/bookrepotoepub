@@ -10,6 +10,9 @@ namespace bookrepotoepub.console
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("****************************");
+            Console.WriteLine("** Start search & extract **");
+            Console.WriteLine("****************************");
             var allArchives = Indexer.GetAllArchives().ToList();
             Console.WriteLine("Found " + allArchives.Count + " archives");
 
@@ -22,6 +25,17 @@ namespace bookrepotoepub.console
 #if DEBUG
                 break;
 #endif
+            }
+            Console.WriteLine("**********************");
+            Console.WriteLine("** Start converting **");
+            Console.WriteLine("**********************");
+            var officeWorker = new OfficeWorker();
+            var allRichTextDocuments = Indexer.GetAllRichTextFiles();
+            foreach (var richTextDocument in allRichTextDocuments)
+            {
+                Console.WriteLine("Converting: " + richTextDocument);
+                officeWorker.ConvertToWordDocument(richTextDocument);
+                Console.WriteLine("Converted: " + richTextDocument);
             }
         }
     }
