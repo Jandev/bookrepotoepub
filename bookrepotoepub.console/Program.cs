@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace bookrepotoepub.console
 {
@@ -23,7 +20,7 @@ namespace bookrepotoepub.console
                 extracter.ExtractArchiveToLocalPath(archive);
                 Console.WriteLine("Extracted: " + archive);
 #if DEBUG
-                break;
+                //break;
 #endif
             }
             Console.WriteLine("**********************");
